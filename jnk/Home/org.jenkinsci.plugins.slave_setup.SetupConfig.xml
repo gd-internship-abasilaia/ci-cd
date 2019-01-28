@@ -1,0 +1,14 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<org.jenkinsci.plugins.slave__setup.SetupConfig plugin="slave-setup@1.10">
+  <setupConfigItems>
+    <org.jenkinsci.plugins.slave__setup.SetupConfigItem>
+      <preLaunchScript>./prelaunch.sh</preLaunchScript>
+      <prepareScript>./prepare_files.sh</prepareScript>
+      <filesDir>/var/jenkins/devSlaveFiles</filesDir>
+      <commandLine>./slave_setup.sh</commandLine>
+      <deployNow>false</deployNow>
+      <assignedLabelString>ve</assignedLabelString>
+      <prepareScriptExecuted>false</prepareScriptExecuted>
+    </org.jenkinsci.plugins.slave__setup.SetupConfigItem>
+  </setupConfigItems>
+</org.jenkinsci.plugins.slave__setup.SetupConfig>

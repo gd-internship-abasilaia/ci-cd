@@ -1,0 +1,37 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<jenkins.plugins.shiningpanda.tools.PythonInstallation_-DescriptorImpl plugin="shiningpanda@0.24">
+  <installations>
+    <jenkins.plugins.shiningpanda.tools.PythonInstallation>
+      <name>CPython-2.6</name>
+      <home>/System/Library/Frameworks/Python.framework/Versions/2.6</home>
+      <properties>
+        <hudson.tools.InstallSourceProperty>
+          <installers/>
+        </hudson.tools.InstallSourceProperty>
+      </properties>
+    </jenkins.plugins.shiningpanda.tools.PythonInstallation>
+    <jenkins.plugins.shiningpanda.tools.PythonInstallation>
+      <name>System-CPython-2.7</name>
+      <home>/System/Library/Frameworks/Python.framework/Versions/2.7</home>
+      <properties>
+        <hudson.tools.InstallSourceProperty>
+          <installers/>
+        </hudson.tools.InstallSourceProperty>
+      </properties>
+    </jenkins.plugins.shiningpanda.tools.PythonInstallation>
+    <jenkins.plugins.shiningpanda.tools.PythonInstallation>
+      <name>Pythonnn</name>
+      <home>/System/Library/Frameworks/Python.framework/Versions/Current</home>
+      <properties>
+        <hudson.tools.InstallSourceProperty>
+          <installers>
+            <hudson.tools.CommandInstaller>
+              <command>sudo pip install python-jenkins</command>
+              <toolHome>/System/Library/Frameworks/Python.framework/Versions/Current</toolHome>
+            </hudson.tools.CommandInstaller>
+          </installers>
+        </hudson.tools.InstallSourceProperty>
+      </properties>
+    </jenkins.plugins.shiningpanda.tools.PythonInstallation>
+  </installations>
+</jenkins.plugins.shiningpanda.tools.PythonInstallation_-DescriptorImpl>

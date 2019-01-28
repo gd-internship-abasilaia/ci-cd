@@ -1,0 +1,40 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<hudson.model.Queue_-State>
+  <counter>1</counter>
+  <items>
+    <hudson.model.Queue_-BuildableItem>
+      <actions>
+        <hudson.model.CauseAction>
+          <causeBag class="linked-hash-map">
+            <entry>
+              <hudson.triggers.SCMTrigger_-SCMTriggerCause>
+                <pollingLog>Started on Jan 17, 2019 9:00:01 AM
+Using strategy: Default
+[poll] Last Built Revision: Revision 4c799df719f1fd165c56cc24c328cf4748712971 (refs/remotes/origin/master)
+Found 10 remote heads on https://github.com/BasileoLuv/Calculator.git
+Ignoring HEAD as it doesn&apos;t match any of the configured refspecs
+Ignoring refs/pull/5/head as it doesn&apos;t match any of the configured refspecs
+Ignoring refs/pull/7/head as it doesn&apos;t match any of the configured refspecs
+Ignoring refs/pull/4/head as it doesn&apos;t match any of the configured refspecs
+Ignoring refs/pull/8/head as it doesn&apos;t match any of the configured refspecs
+Ignoring refs/pull/12/head as it doesn&apos;t match any of the configured refspecs
+Ignoring refs/pull/13/head as it doesn&apos;t match any of the configured refspecs
+Ignoring refs/pull/6/head as it doesn&apos;t match any of the configured refspecs
+[poll] Latest remote head revision on refs/heads/master is: a8a98ffcc7781f51ac22f5bcc4de5e1f9cf677d0
+Done. Took 1.1 sec
+Changes found
+</pollingLog>
+              </hudson.triggers.SCMTrigger_-SCMTriggerCause>
+              <int>1</int>
+            </entry>
+          </causeBag>
+        </hudson.model.CauseAction>
+      </actions>
+      <id>1</id>
+      <task class="hudson.model.FreeStyleProject">ADSAFE-167</task>
+      <inQueueSince>1547704802207</inQueueSince>
+      <buildableStartMilliseconds>1547704809997</buildableStartMilliseconds>
+      <isPending>false</isPending>
+    </hudson.model.Queue_-BuildableItem>
+  </items>
+</hudson.model.Queue_-State>
