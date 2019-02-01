@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/usr/bin/env sh
 
 if [ ! -f nxs/nexus.tgz ]; then
     curl -L https://download.sonatype.com/nexus/nexus-professional-bundle-latest.tar.gz > nxs/nexus.tgz
