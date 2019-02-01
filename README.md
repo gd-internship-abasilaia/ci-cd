@@ -1,4 +1,4 @@
-# In this project there are 3 containers with Jenkins, Jenkins-slave and Nexus server
+# There are Docker images in this repo with Jenkins, Jenkins-slave and Nexus server
 <img src="https://cdn-images-1.medium.com/max/1600/1*DpUVWTopUJr6ZvmPiapLCw.png"/>
 
 
@@ -8,9 +8,8 @@ Summary
 -------
 
 This image contains:
-* Jenkins
-* Java-1.8.0-openjdk
-* Jenkins-slave
+* Jenkins master
+* Jenkins slave with Java-1.8.0-openjdk
 * Nexus
 
 ### Exposed ports
@@ -25,43 +24,38 @@ Installation
 Usage
 -----
 
-I created scripts with installation jenkins and nexus from official site, installation and launch jenkins-slave and command docker-compose up.
+I created scripts with Jenkins and Nexus installations from official site, Jenkins slave image
+and Docker Compose wrapper.
 
 
   1. Run the command:
 ```
-    bash g1o.sh
+    ./sandbox-run.sh
 ```
-  2. TO GET JENKINS PLUGINS AND TOOLS:
-  ```
-    bash jnk/plugins.sh 
+  2. Prepare Jenkins:
+     Wait until Jenkins starts by reading the log
 ```
-or 
+    docker-compose logs -f jenkins-master
 ```
-    cd jnk
-    
-    bash plugins.sh
+    When it finishes downloading the data, start the script:
 ```
- 
-  3. INSTALL NEXUS PYPI REPOSITORY :
+    pushd jnk && ./plugins.sh && popd
+```
+  3. Prepare Nexus:
 
 ```
-    cd nxs
-    
-    bash pypi-init.sh
+    pushd nxs && ./pypi-init.sh && popd
 ```
   
   4. Go to the browser and write 
-* jenkins:
+* Jenkins:
 ```
-    localhost:8083
+    http://localhost:8083
 ```
 * nexus
 ```
-    localhost:8089
+    http://localhost:8089
 ```
 
-
-You can read more about JENKINS [here](https://jenkins.io).
-NEXUS [here](https://www.sonatype.com/nexus-repository-sonatype).
+You can read more about [Jenkins](https://jenkins.io) and [Nexus](https://www.sonatype.com/nexus-repository-sonatype).
 

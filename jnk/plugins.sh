@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 host=http://localhost:8083
 url=/pluginManager/installNecessaryPlugins
@@ -105,8 +105,6 @@ curl -X POST -d '<jenkins><install plugin="workflow-support@2.22" /></jenkins>' 
 curl -X POST -d '<jenkins><install plugin="ws-cleanup@0.36" /></jenkins>' --header 'Content-Type: text/xml' $host$url
 curl -X POST -d '<jenkins><install plugin="yet-another-docker-plugin@0.1.0-rc49" /></jenkins>' --header 'Content-Type: text/xml' $host$url
 curl -X POST -d '<jenkins><install plugin="zentimestamp@4.2" /></jenkins>' --header 'Content-Type: text/xml' $host$url
-
-
 
 # wait 20 sec
 sleep 300
