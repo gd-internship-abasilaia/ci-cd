@@ -39,7 +39,7 @@ and Docker Compose wrapper.
   3. Prepare Nexus:
 
 ```
-    pushd jnk && ./pypi-init.sh && popd
+    pushd nxs && ./pypi-init.sh && popd
 ```
   
   4. Go to the browser and write 
