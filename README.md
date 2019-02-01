@@ -33,6 +33,11 @@ and Docker Compose wrapper.
     ./sandbox-run.sh
 ```
   2. Prepare Jenkins:
+     Wait until Jenkins starts by reading the log
+```
+    docker-compose logs -f jenkins-master
+```
+    When it finishes downloading the data, start the script:
 ```
     pushd jnk && ./plugins.sh && popd
 ```
