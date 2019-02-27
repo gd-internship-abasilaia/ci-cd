@@ -46,7 +46,7 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>git checkout master
+      <command>
 currrelease=$(grep version setup.py | cut -d= -f2 | cut -d- -f1 | sed &apos;s/^.//&apos; | sed &apos;s/.\{2\}$//&apos;)
 release_version=$(echo $snapshot_version | cut -d- -f1)
 echo $release_version
@@ -54,11 +54,7 @@ echo &quot;http://nexus:8081/repository/pypi/packages/python-calculator/${releas
 wget http://nexus:8081/repository/pypi/packages/python-calculator/${release_version}-SNAPSHOT/Python-Calculator-${snapshot_version}.tar.gz
 tar xvzf Python-Calculator-${snapshot_version}.tar.gz
 rm Python-Calculator-${snapshot_version}.tar.gz
-TEMP=$(mktemp /tmp/temporary-file.XXXXXXXX)
-sed &quot;s/version=.*/version=&apos;$currrelease&apos;,/g&quot;  setup.py &gt;$TEMP
-mv $TEMP setup.py
-git add setup.py
-git commit -m &quot;Updated version&quot;
+
 
 cd Python-*
 currsnapshot=$(grep version setup.py | cut -d= -f2 | cut -d- -f1 | sed &apos;s/^.//&apos;)
@@ -67,10 +63,17 @@ echo $currrelease
 
 if [  $currsnapshot &lt;  $currrelease ]
 then 
-	exit 1
+  exit 1
 else 
-	git merge $(cat newcommit.txt)
-	git tag $(echo $currsnapshot)
+  git merge $(cat newcommit.txt)
+    cd ..
+    TEMP=$(mktemp /tmp/temporary-file.XXXXXXXX)
+  sed &quot;s/version=.*/version=&apos;$currsnapshot&apos;,/g&quot;  setup.py &gt;$TEMP
+  mv $TEMP setup.py
+  git add setup.py
+  git commit -m &quot;master version=$currsnapshot&quot;
+    git tag $(echo $currsnapshot)
+    cd Python-*
 fi
 
 python setup.py sdist bdist_wheel
@@ -78,16 +81,13 @@ mv dist/Python-Calculator*.tar.gz dist/Python-Calculator-$currsnapshot.tar.gz
 mv dist/Python_Calculator*.whl dist/Python-Calculator-$currsnapshot-py2-none-any.whl
 python2.7 -m twine upload dist/* --repository-url http://nexus:8081/repository/pypi-releases/ -u admin -p admin123 --skip-existing</command>
     </hudson.tasks.Shell>
-    <hudson.tasks.Shell>
-      <command></command>
-    </hudson.tasks.Shell>
   </builders>
   <publishers>
     <hudson.plugins.git.GitPublisher plugin="git@4.0.0-rc">
       <configVersion>2</configVersion>
       <pushMerge>false</pushMerge>
       <pushOnlyIfSuccess>true</pushOnlyIfSuccess>
-      <forcePush>false</forcePush>
+      <forcePush>true</forcePush>
       <branchesToPush>
         <hudson.plugins.git.GitPublisher_-BranchToPush>
           <targetRepoName>origin</targetRepoName>

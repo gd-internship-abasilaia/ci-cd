@@ -36,7 +36,8 @@
   <builders>
     <hudson.tasks.Shell>
       <command>git checkout dev
-var=$(grep version setup.py | cut -d= -f2 | cut -d- -f1 | sed &apos;s/^.//&apos;)
+git rebase origin/master
+var=$(grep version setup.py | cut -d= -f2 | cut -d- -f1 | sed &apos;s/^.//&apos; | sed &apos;s/.\{2\}$//&apos;)
 major_version=$(echo $var| cut -d. -f1)
 minor_version=$(echo $var | cut -d. -f2)
 hotfix_version=$(echo $var | cut -d. -f3)
@@ -54,7 +55,7 @@ git commit -m &quot;updated version&quot;</command>
       <configVersion>2</configVersion>
       <pushMerge>false</pushMerge>
       <pushOnlyIfSuccess>true</pushOnlyIfSuccess>
-      <forcePush>false</forcePush>
+      <forcePush>true</forcePush>
       <branchesToPush>
         <hudson.plugins.git.GitPublisher_-BranchToPush>
           <targetRepoName>origin</targetRepoName>
